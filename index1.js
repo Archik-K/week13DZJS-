@@ -34,7 +34,6 @@ function date() {
 	return now;
 }
 
-
 // Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener("click", () => {
 	// Преобразование имени пользователя и получение аватара и сообщения из формы
@@ -51,15 +50,16 @@ sendButton.addEventListener("click", () => {
 	}
 	if (avatar == "") {
 		image = new Array();
-image[0] = "img01.png";
-image[1] = "img02.png";
-image[2] = "img03.png";
-image[3] = "img04.png";
-image[4] = "img05.png";
-image[5] = "img06.png";
-image[6] = "img07.png";
-image[7] = "img08.png"; 
-	    document.getElementById("messages")+="<img src=" + image[avatar] + ">";
+		image[0] = "img01.png";
+		image[1] = "img02.png";
+		image[2] = "img03.png";
+		image[3] = "img04.png";
+		image[4] = "img05.png";
+		image[5] = "img06.png";
+		image[6] = "img07.png";
+		image[7] = "img08.png";
+		document.getElementById("messages").innerHTML +=
+			"<img src=" + image[avatar] + ">";
 	}
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
