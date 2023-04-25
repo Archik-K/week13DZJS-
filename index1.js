@@ -34,13 +34,13 @@ function date() {
 	return now;
 }
 
+
 // Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener("click", () => {
 	// Преобразование имени пользователя и получение аватара и сообщения из формы
 	const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
-	const avatar = avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
+	const avatar = avatarmessage.value || Math.round(Math.random() * 8); //получаем ссылку на аватар пользователя из поля ввода
 	const noname = nameInput.value;
-	const noavatar = avatarmessage.value;
 	const dates = date(messageInput.value);
 	const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
 	const message = checkSpam(messageInput.value); //приводим введенный текст сообщения к формату, в котором все вхождения "viagra" и "XXX" заменены на "***"
@@ -49,22 +49,17 @@ sendButton.addEventListener("click", () => {
 	if (noname == "") {
 		document.getElementById("messages").innerHTML += "username";
 	}
-	if (noavatar == "") {
-		document.getElementById("messages").innerHTML +=
-			url(
-				"/assets/1646407782_37-damion-club-p-milie-mificheskie-sushchestva-art-37.png"
-			) ||
-			url("/assets/1646682093_13-adonius-club-p-koshka-drakon-art-23.png") ||
-			url(
-				"/assets/1663345642_54-phonoteka-org-p-milii-drakon-art-krasivo-66.png"
-			) ||
-			url(
-				"/assets/1674583166_beolin-club-p-milie-kotyata-risunki-legkie-instagram-26.png"
-			) ||
-			url("/assets/287142354002211.png") ||
-			url("/assets/288841788056211.png") ||
-			url("/assets/cc21d30651bc23e22c40a3615efda741.png") ||
-			url("/assets/clipart-butterfly-down-syndrome-12.png");
+	if (avatar == "") {
+		image = new Array();
+image[0] = "img01.png";
+image[1] = "img02.png";
+image[2] = "img03.png";
+image[3] = "img04.png";
+image[4] = "img05.png";
+image[5] = "img06.png";
+image[6] = "img07.png";
+image[7] = "img08.png"; 
+	    document.getElementById("messages")+="<img src=" + image[avatar] + ">";
 	}
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
