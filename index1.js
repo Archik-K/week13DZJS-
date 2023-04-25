@@ -51,20 +51,14 @@ sendButton.addEventListener("click", () => {
 	}
 	if (noavatar == "") {
 		document.getElementById("messages").innerHTML +=
-			url(
-				"/assets/1646407782_37-damion-club-p-milie-mificheskie-sushchestva-art-37.png"
-			) ||
-			url("/assets/1646682093_13-adonius-club-p-koshka-drakon-art-23.png") ||
-			url(
-				"/assets/1663345642_54-phonoteka-org-p-milii-drakon-art-krasivo-66.png"
-			) ||
-			url(
-				"/assets/1674583166_beolin-club-p-milie-kotyata-risunki-legkie-instagram-26.png"
-			) ||
-			url("/assets/287142354002211.png") ||
-			url("/assets/288841788056211.png") ||
-			url("/assets/cc21d30651bc23e22c40a3615efda741.png") ||
-			url("/assets/clipart-butterfly-down-syndrome-12.png");
+			url("img1.png") ||
+			url("img2.png") ||
+			url("img3.png") ||
+			url("img4.png") ||
+			url("img5.png") ||
+			url("img6.png") ||
+			url("img7.png") ||
+			url("img8.png");
 	}
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
