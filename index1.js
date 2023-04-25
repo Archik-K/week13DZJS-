@@ -4,7 +4,7 @@ const avatarmessage = document.getElementById("avatar"); //получаем эл
 const messageInput = document.getElementById("message-input"); //получаем элемент с id "message-input" (поле ввода комментария пользователя)
 const messagesDiv = document.getElementById("messages"); //получаем элемент с id "messages" (контейнер для всех сообщений чата)
 const sendButton = document.getElementById("send-button"); //получаем элемент с id "send-button" (кнопка "Отправить")
-const Datecheckbox = document.getElementById("checkbox1");
+const namecheckbox = document.getElementById("checkbox1");
 
 // Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
 function transformName(name) {
@@ -34,10 +34,18 @@ function date() {
 	return now;
 }
 
+function checkbox() {
+	if (namecheckbox == true) {
+		username.textContent.display = "";
+	} else {
+		fullname.textContent.display = "username";
+	}
+}
+
 // Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener("click", () => {
 	// Преобразование имени пользователя и получение аватара и сообщения из формы
-	const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
+	const name = transformName(nameInput.value) + checkbox(namecheckbox.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
 	const avatar = avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
 	const noname = nameInput.value;
 	const noavatar = avatarmessage.value;
