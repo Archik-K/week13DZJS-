@@ -1,0 +1,359 @@
+html {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+		Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	line-height: 1.5;
+	font-size: 1em;
+}
+
+body {
+	background-color: #0a0a0a;
+	width: 100%;
+}
+
+::-moz-placeholder {
+	color: #cbd0d5;
+}
+
+:-ms-input-placeholder {
+	color: #cbd0d5;
+}
+
+::placeholder {
+	color: #cbd0d5;
+}
+
+html::after {
+	content: "";
+	background: linear-gradient(21deg, #10abff, #1beabd);
+	height: 3px;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.container {
+	width: 1500px;
+	max-width: 100%;
+	padding: 10px 0px 0px 30px;
+	margin: 0;
+}
+
+/* flex-контейнер */
+.row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: nowrap;
+	margin-right: -80px;
+	margin-left: -15px;
+	height: 700px;
+	width: 1500px;
+}
+
+/* общие настройки для flex-элементов */
+.col {
+	position: relative;
+	width: 800px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.col__Chat_Block {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	width: 780px;
+}
+
+.comments_service_first_title {
+	color: azure;
+}
+
+.leave_your_comment_title {
+	color: #73e0e5;
+}
+.enter_your_full_name,
+.enter_your_avatar_link,
+.text_leave_a_comment {
+	display: flex;
+	flex-direction: column;
+	color: #cbd0d5;
+	margin: 23px 0 13px 0;
+}
+
+.block_fio,
+.block_avatar {
+	padding: 1% 0% 0% 0%;
+}
+
+.text_input_field_for_full_name,
+.text_field_for_entering_an_avatar_link {
+	background: transparent;
+	border-bottom: 2px solid #333;
+	outline: none;
+	padding-bottom: 5px;
+	border-radius: 7px;
+	width: 645px;
+	height: 23px;
+	border: 2px solid #45e7dfb7;
+	color: #ffffff;
+	min-width: 12em;
+}
+
+.text_input_field_for_full_name:focus,
+.text_field_for_entering_an_avatar_link:focus {
+	border-color: #00ffff;
+	box-shadow: 0 0 20px #00ffff;
+}
+
+.text_input_field_for_full_name:focus ~ label:before,
+.text_input_field_for_full_name:focus ~ label:after,
+.text_field_for_entering_an_avatar_link:focus ~ label:before,
+.text_field_for_entering_an_avatar_link:focus ~ label:after {
+	animation: 2s neon linear infinite;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 9px solid #00ffff;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+.text_input_field_for_full_name:focus ~ label:before,
+.text_field_for_entering_an_avatar_link:focus ~ label:before {
+	transform: rotate(45deg);
+	border-top: none;
+	border-right: none;
+}
+
+.text_input_field_for_full_name:focus ~ label:after,
+.text_field_for_entering_an_avatar_link:focus ~ label:after {
+	transform: rotate(-45deg);
+	border-top: none;
+	border-left: none;
+}
+
+@keyframes neon {
+	0% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+	50% {
+		filter: blur(20px);
+		opacity: 0.8;
+	}
+	100% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+}
+
+.comment_block {
+	padding: 12px 0 0 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.text_leave_a_comment {
+	color: #cbd0d5;
+}
+
+.comment_input_field {
+	display: inline-block;
+	height: 100px;
+	padding: 5px;
+	overflow: hidden;
+	overflow-y: scroll;
+	width: 640px;
+}
+
+.comment_input_field::-webkit-scrollbar {
+	width: 8px;
+}
+.scrollable {
+	max-height: 300px; /* Установить максимальную высоту элемента /
+	overflow-y: scroll; / Оставить вертикальный скрол /
+	overflow-x: hidden; / Скрыть горизонтальный скрол */
+}
+.comment_input_field::-webkit-scrollbar-track {
+	background-color: #6beeff00;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: #66f5ff;
+	height: 8px;
+}
+
+textarea {
+	background: transparent;
+	border-bottom: 2px solid #333;
+	outline: none;
+	font-size: 1rem;
+	color: #fff;
+	border-radius: 7px;
+	border: 2px solid #45e7dfb7;
+	resize: none;
+}
+
+textarea:focus {
+	border-color: #00ffff;
+	box-shadow: 0 0 20px #00ffff;
+}
+
+textarea:focus ~ label:before,
+textarea:focus ~ label:after {
+	animation: 2s neon linear infinite;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border: 9px solid #00ffff;
+	top: 0;
+	left: 0;
+	z-index: -1;
+}
+
+textarea:focus ~ label:before {
+	transform: rotate(45deg);
+	border-top: none;
+	border-right: none;
+}
+
+textarea:focus ~ label:after {
+	transform: rotate(-45deg);
+	border-top: none;
+	border-left: none;
+}
+
+@keyframes neon {
+	0% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+	50% {
+		filter: blur(20px);
+		opacity: 0.8;
+	}
+	100% {
+		filter: blur(10px);
+		opacity: 0.5;
+	}
+}
+
+h2 {
+	color: azure;
+}
+
+.body_comments {
+	border-left: 4px solid #35a9a3; /* Ширина, цвет и вид линии */
+	padding: 10px 20px 10px 10px; /* Расстояние от линии до текста */
+	background: #00ffff0f; /* Цвет фона */
+	color: #fff; /* Цвет текста */
+	word-break: break-all;
+	width: 650px;
+}
+.knopka {
+	margin: 48px 0 0 0;
+}
+
+.button_sending {
+	width: 10em;
+	height: 5ex;
+	background-image: linear-gradient(135deg, #10abff 40%, #1beabd);
+	border: none;
+	border-radius: 5px;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+
+.button_sending:active {
+	box-shadow: 2px 2px 5px #fc894d;
+}
+
+img {
+	width: 30%; /* Ширина изображения */
+}
+
+.bloc_js {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+.new_style {
+	display: flex;
+	width: 268px;
+	padding: 0px 5px 0px 13px;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	color: #cbd0d5;
+}
+h4 {
+	margin: 2px 45px 2px 0;
+}
+
+.span_text_fio,
+.span_text_avatar {
+	margin: 18px 0 0 0;
+}
+
+.namecheckbox {
+	display: flex;
+	width: 305px;
+	color: #cbd0d5;
+	flex-wrap: nowrap;
+	align-items: flex-end;
+	justify-content: flex-start;
+}
+
+.check {
+	width: 200px;
+}
+
+.neon-checkbox {
+	opacity: 0;
+	position: absolute;
+}
+
+.neon-checkbox + label {
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.neon-checkbox + label:before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	background-color: #111;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.neon-checkbox:checked + label:before {
+	background-color: #14eb0c;
+	box-shadow: 0 0 10px #5cff64, 0 0 20px #45ff4b, 0 0 40px #00a71f,
+		0 0 80px #000000;
+}
+
+.neon-checkbox:focus + label:before {
+	outline: none;
+}
+
+.neon-checkbox:checked:focus + label:before {
+	box-shadow: 0 0 5px rgb(106, 255, 101), 0 0 10px rgb(39, 255, 71),
+		0 0 20px rgb(16, 255, 64), 0 0 40px rgb(0, 208, 3), 0 0 80px #1dff64;
+}
