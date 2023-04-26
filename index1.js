@@ -11,7 +11,7 @@ function transformName(name) {
 	name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
 	name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
 	if (nameInput.value == "") {
-		messagesDiv.innerHTML += "username";
+		messageElement.innerHTML += "username";
 	}
 	return name;
 }
@@ -45,7 +45,6 @@ function checkbox() {
 	}
 }
 
-nameInput;
 function randomfoto() {
 	const avatars = [
 		"img1.png",
@@ -60,11 +59,12 @@ function randomfoto() {
 
 	if (avatarmessage == "") {
 		// Проверяем, не загрузил ли пользователь свой аватар
-		const index = Math.floor(Math.random() * avatars.length);
-		const avatar = avatars[index];
+		const index = avatars[Math.floor(Math.random() * avatars.length)];
 		document.getElementById("messages").innerHTML += `<img src="${avatar}">`;
+		avatarImage.src = avatarInput.value || index;
 	}
 }
+
 // Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener("click", () => {
 	// Преобразование имени пользователя и получение аватара и сообщения из формы
@@ -78,6 +78,7 @@ sendButton.addEventListener("click", () => {
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
 	nameInput.value = ""; //очищаем поле ввода имя пользователя
+	checkbox();
 });
 /* Этот код создает пять переменных, которые содержат ссылки на HTML-элементы: 
 'nameInput' - для поля ввода ФИО, 
