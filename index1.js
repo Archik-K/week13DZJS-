@@ -6,16 +6,18 @@ const messagesDiv = document.getElementById("messages"); //получаем эл
 const sendButton = document.getElementById("send-button"); //получаем элемент с id "send-button" (кнопка "Отправить")
 const nameCheckbox = document.getElementById("checkbox1");
 
-// Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
-// Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
+// Функция преобразования имени пользователя:проверка нажатия чекбокса, удаление лишних пробелов в ведённом тексте, проверка на присутсвие значения в поле ввода, перевод  в нижний регистр и приведение первой буквы к верхнему регистру
 function transformName(name) {
-	if (nameInput.value === "") {
+	if (nameInput.value == "") {
+		//проверяем поле ввода имени пользователя, если пользователь ничего не ввёл, то выведется username
 		return `username`;
 	} else if (nameCheckbox.checked) {
+		//если чекбокс нажат, то выведется имя пользователся
 		name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
 		name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
 		return name;
 	} else {
+		//если чекбокс не нажат, то выведется username
 		return `username`;
 	}
 }
@@ -36,11 +38,13 @@ function checkSpam(str) {
 	return spamtext.replace(/viagra|xxx/gi, "***"); //заменяем все вхождения "viagra" и "XXX" на "*" и возвращаем новую строку
 }
 
+//Функция вывода текущей даты
 function date() {
-	let now = new Date();
-	return now;
+	let now = new Date(); //создаем переменную, которая хранит в себе текущую дату
+	return now; //выводим текуццую дату
 }
 
+//Функция для вывода рандоммных фото, если пользователь не ввёл ссылку на нужную ему фотографию
 function randomfoto() {
 	let avatars = [
 		"/assets/img1.png",
@@ -51,7 +55,7 @@ function randomfoto() {
 		"/assets/img6.png",
 		"/assets/img7.png",
 		"/assets/img8.png",
-	];
+	]; //создаём массив, где хранятся 8 рандомных фото
 
 	if (avatarmessage.value == "") {
 		// Проверяем, не загрузил ли пользователь свой аватар
@@ -63,13 +67,12 @@ function randomfoto() {
 
 // Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener("click", () => {
-	// Преобразование имени пользователя и получение аватара и сообщения из формы
-	const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
-	const avatar = randomfoto(avatarmessage.value); //получаем ссылку на аватар пользователя из поля ввода
-	const dates = date(messageInput.value);
+	const name = transformName(nameInput.value); ///вызываем функцию, которая проверяет заполняемость поля ввода имени, проверяет нажатие чекбокса, приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
+	const avatar = randomfoto(avatarmessage.value); //вызываем функцию для вывода рандомных изображений, если пользователь не вводит ссылку на нужную ему картинку
+	const dates = date(messageInput.value); //вызываем функцию, которая выводит дату и время написания комментария
 	const message = checkSpam(messageInput.value); //приводим введенный текст сообщения к формату, в котором все вхождения "viagra" и "XXX" заменены на "***"
 	const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
-	messageElement.innerHTML = `<p class="bloc_js"><img src="${avatar}" alt='изображение аватара'><font class="name_style"> ${name}</font><font class="dates_style"> ${dates}</font> </p>${message}<hr>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, его имя и текст сообщения
+	messageElement.innerHTML = `<p class="bloc_js"><img src="${avatar}" alt='изображение аватара'><font class="name_style"> ${name}</font><font class="dates_style"> ${dates}</font> </p>${message}<hr>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, время написания комментария , его имя и текст сообщения
 	messagesDiv.appendChild(messageElement); //добавляем созданный div-элемент в контейнер для всех сообщений чата
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
