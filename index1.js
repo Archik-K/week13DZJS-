@@ -11,7 +11,7 @@ function transformName(name) {
 	name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
 	name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
 	if (nameInput.value == "") {
-		messageElement.innerHTML += "username";
+		messagesDiv.innerHTML += "username";
 	}
 	return name;
 }
@@ -38,7 +38,7 @@ function date() {
 }
 
 function checkbox() {
-	if (nameCheckbox.checked) {
+	if (nameCheckbox.checked == "") {
 		nameInput.style.display = "block"; // если чекбокс отмечен, показываем элемент с именем пользователя
 	} else {
 		nameInput.style.display = "none"; // если чекбокс не отмечен, скрываем элемент с именем пользователя
