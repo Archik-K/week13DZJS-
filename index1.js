@@ -7,13 +7,15 @@ const sendButton = document.getElementById("send-button"); //получаем э
 const nameCheckbox = document.getElementById("checkbox1");
 
 // Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
+// Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
 function transformName(name) {
-	name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
-	name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
-	if (nameInput.value == "") {
-		messagesDiv.innerHTML += "username";
+	if (nameCheckbox.checked) {
+		name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
+		name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
+		return name;
+	} else if (nameCheckbox.checked == false) {
+		return `username`;
 	}
-	return name;
 }
 
 // Вспомогательная функция, которая приводит первую букву слова к верхнему регистру
@@ -37,17 +39,9 @@ function date() {
 	return now;
 }
 
-function checkbox() {
-	if (nameCheckbox.checked == "") {
-		nameInput.style.display = "block"; // если чекбокс отмечен, показываем элемент с именем пользователя
-	} else {
-		nameInput.style.display = "none"; // если чекбокс не отмечен, скрываем элемент с именем пользователя
-	}
-}
-
 function randomfoto() {
 	const avatars = [
-		"img1.png",
+		"/assets/img1.png",
 		"img2.png",
 		"img3.png",
 		"img4.png",
@@ -57,11 +51,11 @@ function randomfoto() {
 		"img8.png",
 	];
 
-	if (avatarmessage == "") {
+	if (avatarmessage.value == "") {
 		// Проверяем, не загрузил ли пользователь свой аватар
-		const index = avatars[Math.floor(Math.random() * avatars.length)];
-		document.getElementById("messages").innerHTML += `<img src="${avatar}">`;
-		avatarImage.src = avatarInput.value || index;
+		return avatars[Math.floor(Math.random() * 8)];
+	} else {
+		return avatarmessage.value;
 	}
 }
 
@@ -69,16 +63,15 @@ function randomfoto() {
 sendButton.addEventListener("click", () => {
 	// Преобразование имени пользователя и получение аватара и сообщения из формы
 	const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
-	const avatar = avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
+	const avatar = randomfoto(avatarmessage.value); //получаем ссылку на аватар пользователя из поля ввода
 	const dates = date(messageInput.value);
-	const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
 	const message = checkSpam(messageInput.value); //приводим введенный текст сообщения к формату, в котором все вхождения "viagra" и "XXX" заменены на "***"
+	const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
 	messageElement.innerHTML = `<p class="bloc_js"><img src="${avatar}" alt='изображение аватара'> <font class="new_style"> ${dates}</font></p> <p> ${name}<br>${message}</p>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, его имя и текст сообщения
 	messagesDiv.appendChild(messageElement); //добавляем созданный div-элемент в контейнер для всех сообщений чата
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
 	nameInput.value = ""; //очищаем поле ввода имя пользователя
-	checkbox();
 });
 /* Этот код создает пять переменных, которые содержат ссылки на HTML-элементы: 
 'nameInput' - для поля ввода ФИО, 
