@@ -13,7 +13,7 @@ function transformName(name) {
 		name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
 		name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
 		return name;
-	} else if (nameCheckbox.checked == false) {
+	} else if (nameInput.value == "") {
 		return `username`;
 	}
 }
@@ -40,15 +40,15 @@ function date() {
 }
 
 function randomfoto() {
-	const avatars = [
+	let avatars = [
 		"/assets/img1.png",
-		"img2.png",
-		"img3.png",
-		"img4.png",
-		"img5.png",
-		"img6.png",
-		"img7.png",
-		"img8.png",
+		"/assets/img2.png",
+		"/assets/img3.png",
+		"/assets/img4.png",
+		"/assets/img5.png",
+		"/assets/img6.png",
+		"/assets/img7.png",
+		"/assets/img8.png",
 	];
 
 	if (avatarmessage.value == "") {
@@ -67,7 +67,7 @@ sendButton.addEventListener("click", () => {
 	const dates = date(messageInput.value);
 	const message = checkSpam(messageInput.value); //приводим введенный текст сообщения к формату, в котором все вхождения "viagra" и "XXX" заменены на "***"
 	const messageElement = document.createElement("div"); //создаем новый div-элемент, в котором будет содержаться сообщение пользователя
-	messageElement.innerHTML = `<p class="bloc_js"><img src="${avatar}" alt='изображение аватара'> <font class="new_style"> ${dates}</font></p> <p> ${name}<br>${message}</p>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, его имя и текст сообщения
+	messageElement.innerHTML = `<p class="bloc_js"><img src="${avatar}" alt='изображение аватара'><font class="name_style"> ${name}</font><font class="dates_style"> ${dates}</font> </p>${message}<hr>`; //добавляем в созданный div-элемент ссылку на аватар пользователя, его имя и текст сообщения
 	messagesDiv.appendChild(messageElement); //добавляем созданный div-элемент в контейнер для всех сообщений чата
 	messageInput.value = ""; //очищаем поле ввода сообщения
 	avatarmessage.value = ""; //очищаем поле ввода ссылки на аватар пользователя
