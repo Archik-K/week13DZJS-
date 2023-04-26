@@ -9,11 +9,13 @@ const nameCheckbox = document.getElementById("checkbox1");
 // Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
 // Функция преобразования имени пользователя: удаление лишних пробелов, перевод в нижний регистр и приведение первой буквы к верхнему регистру
 function transformName(name) {
-	if (nameCheckbox.checked) {
+	if (nameInput.value === "") {
+		return `username`;
+	} else if (nameCheckbox.checked) {
 		name = name.trim().toLowerCase(); //убираем лишние пробелы и переводим всё в нижний регистр
 		name = capitalize(name); //используем фукнцию capitalize(), чтобы привести первую букву каждого слова в имени к верхнему регистру
 		return name;
-	} else if (nameInput.value == "") {
+	} else {
 		return `username`;
 	}
 }
