@@ -34,18 +34,18 @@ function date() {
 	return now;
 }
 
-function checkbox() {
+/* function checkbox() {
 	if (namecheckbox == true) {
 		username.textContent.display = "";
 	} else {
 		fullname.textContent.display = "username";
 	}
-}
+} */
 
 // Обработчик события при нажатии на кнопку отправки сообщения
 sendButton.addEventListener("click", () => {
 	// Преобразование имени пользователя и получение аватара и сообщения из формы
-	const name = transformName(nameInput.value) + checkbox(namecheckbox.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
+	const name = transformName(nameInput.value); //приводим введенное имя пользователя к формату "Имя Фамилия" с приведенными к верхнему регистру первыми буквами каждого слова
 	const avatar = avatarmessage.value; //получаем ссылку на аватар пользователя из поля ввода
 	const noname = nameInput.value;
 	const noavatar = avatarmessage.value;
