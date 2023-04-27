@@ -57,11 +57,11 @@ function randomfoto() {
 		"/assets/img8.png",
 	]; //создаём массив, где хранятся 8 рандомных фото
 
+	// Проверяем, не загрузил ли пользователь свой аватар
 	if (avatarmessage.value == "") {
-		// Проверяем, не загрузил ли пользователь свой аватар
-		return avatars[Math.floor(Math.random() * avatars.length)];
+		return avatars[Math.floor(Math.random() * avatars.length)]; //если пользователь не загрузил аватар, то выбирается любое рандомное фото из массива
 	} else {
-		return avatarmessage.value;
+		return avatarmessage.value; //если пользователь ввел ссылку на аватар, то выведется его картинка
 	}
 }
 
