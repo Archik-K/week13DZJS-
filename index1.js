@@ -59,7 +59,7 @@ function randomfoto() {
 
 	if (avatarmessage.value == "") {
 		// Проверяем, не загрузил ли пользователь свой аватар
-		return avatars[Math.floor(Math.random() * 8)];
+		return avatars[Math.floor(Math.random() * avatars.length)];
 	} else {
 		return avatarmessage.value;
 	}
